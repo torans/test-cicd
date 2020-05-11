@@ -6,11 +6,15 @@ ENV HOSTNAME cicd-test
 # 维护者信息
 MAINTAINER ranjun@bizika.cloud
 
-# 复制文件到网站目录
- COPY  html /usr/share/nginx/html
 
- EXPOSE 80
+# 国内debian源
+ADD sources.list /etc/apt/
 
- # 容器启动命令
+ # 复制文件到网站目录
+COPY  html /usr/share/nginx/html
 
- CMD ["/usr/bin/supervisord"]
+EXPOSE 80
+
+# 容器启动命令
+
+CMD ["/usr/bin/supervisord"]
